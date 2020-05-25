@@ -26,7 +26,8 @@ object DiamondAnalyzer {
 
     //Maximum price of all diamonds
     def maximumPrice(spark: SparkSession): Double = {
-      0.0
+      import spark.implicits._
+      diamondsDF.select(max("price")).as[Double].collect()(0)
     }
 
     //Filter premium cut diamonds and fetch record count
