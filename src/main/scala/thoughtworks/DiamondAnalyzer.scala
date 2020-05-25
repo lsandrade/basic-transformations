@@ -50,7 +50,9 @@ object DiamondAnalyzer {
 
     //Drop id column and then check for duplicates
     def removeDuplicateRecords(spark: SparkSession): Dataset[Row] = {
-      spark.emptyDataFrame
+      diamondsDF
+        .drop("id")
+        .dropDuplicates()
     }
 
     //Populate column grade based on cut and clarity using when - otherwise conditionals
