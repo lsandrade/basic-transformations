@@ -20,7 +20,8 @@ object DiamondAnalyzer {
 
     //Minimum price of all diamonds
     def minimumPrice(spark: SparkSession): Double = {
-      0.0
+      import spark.implicits._
+      diamondsDF.select(min("price")).as[Double].collect()(0)
     }
 
     //Maximum price of all diamonds
