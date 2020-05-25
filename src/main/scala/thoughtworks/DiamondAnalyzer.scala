@@ -1,6 +1,6 @@
 package thoughtworks
 
-import org.apache.spark.sql.functions.{lit, lower}
+import org.apache.spark.sql.functions._
 import org.apache.spark.sql.{Column, Dataset, Row, SparkSession}
 
 object DiamondAnalyzer {
@@ -14,7 +14,8 @@ object DiamondAnalyzer {
 
     //Average price of all diamonds
     def averagePrice(spark: SparkSession): Double = {
-      0.0
+      import spark.implicits._
+      diamondsDF.select(avg("price")).as[Double].collect()(0)
     }
 
     //Minimum price of all diamonds

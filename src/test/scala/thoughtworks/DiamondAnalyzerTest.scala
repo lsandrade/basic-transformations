@@ -3,7 +3,7 @@ package thoughtworks
 import org.scalatest.{Ignore, Matchers}
 import thoughtworks.DiamondAnalyzer._
 
-@Ignore
+
 class DiamondAnalyzerTest extends FeatureSpecWithSpark with Matchers {
 
   import spark.implicits._
