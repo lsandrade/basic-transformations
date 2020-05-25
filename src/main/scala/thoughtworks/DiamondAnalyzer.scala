@@ -45,7 +45,7 @@ object DiamondAnalyzer {
     }
 
     def dropColorColumn(spark: SparkSession): Dataset[Row] = {
-      spark.emptyDataFrame
+      diamondsDF.drop("color")
     }
 
     //Drop id column and then check for duplicates
