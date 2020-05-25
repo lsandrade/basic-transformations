@@ -39,7 +39,9 @@ object DiamondAnalyzer {
 
     //Evaluate average price of diamonds by clarity using groupby and avg functions
     def averagePriceByClarity(spark: SparkSession): Dataset[Row] = {
-      spark.emptyDataFrame
+      diamondsDF
+        .groupBy("clarity")
+        .agg(avg("price"))
     }
 
     def dropColorColumn(spark: SparkSession): Dataset[Row] = {
