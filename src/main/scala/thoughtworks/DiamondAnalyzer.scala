@@ -57,7 +57,11 @@ object DiamondAnalyzer {
 
     //Populate column grade based on cut and clarity using when - otherwise conditionals
     def computeGrade(spark: SparkSession): Dataset[Row] = {
-      spark.emptyDataFrame
+      val columnValue = when(isGradeA(spark), "A")
+        .otherwise(when(isGradeB(spark), "B")
+        .otherwise("C"))
+
+      diamondsDF.withColumn("grade", columnValue)
     }
 
     def isGradeA(spark: SparkSession):Column = {
