@@ -32,7 +32,9 @@ object DiamondAnalyzer {
 
     //Filter premium cut diamonds and fetch record count
     def totalPremiumCutDiamonds(spark: SparkSession): Long = {
-      0
+      diamondsDF
+        .filter(lower(col("cut")) === lit("premium"))
+        .count()
     }
 
     //Evaluate average price of diamonds by clarity using groupby and avg functions
