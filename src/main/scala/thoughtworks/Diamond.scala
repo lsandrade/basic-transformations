@@ -8,7 +8,7 @@ object Diamond {
     val spark = SparkSession.builder().appName("Analyze Diamond Data Spark App").getOrCreate()
 
     //Create dataframe from src/main/resources/diamonds.csv
-    val diamondDF = spark.emptyDataFrame
+    val diamondDF = spark.read.csv("./src/main/resources/diamonds.csv")
 
     val totalNumRows = diamondDF.totalQuantity(spark)
     //Perform operations on diamonds Dataset
